@@ -1,0 +1,139 @@
+<mvc:View controllerName="SD.SOCredit.controller.CreditSumit" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:unified="sap.ui.unified" xmlns:ux="sap.uxap" xmlns:core="sap.ui.core">
+	<App id="app">
+		<Page id="page" title="超信用額度申請">
+			<content>
+				<f:Form editable="true" title="凍結交貨單">
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="4" columnsM="4"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<!--selectionChange="SNChange"-->
+											<Text text="單號:" width="6em" textAlign="Begin"/>
+											<ComboBox id="DeliveryDocument" items="{ path: '/DeliveryDocList', sorter: { path: 'DeliveryDocument' } }">
+												<core:Item key="{key}" text="{DeliveryDocument}"/>
+											</ComboBox>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Button text="申請" id="butSearch" type="Accept" press="handleSearch" width="6rem"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+										<l:HorizontalLayout></l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<f:Form editable="true" title="超信用額度申請表">
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="2"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="申請人:" width="6em" textAlign="Begin"/>
+											<Input id="APPLICANT" value="{/SOCredit/APPLICANT}" editable="false"/>
+											<Text text="{/SOCredit/APPLICANTNAME}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="業務員:" width="6em" textAlign="Begin"/>
+											<Input id="SALESMAN" value="{/SOCredit/SALESMAN}" editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="创建日期:" width="6em" textAlign="Begin"/>
+											<DatePicker id="CREATEDATE" value="{path:'/SOCredit/CREATEDATE',formatter:'.formatter.date'}" width="10em" editable="false"
+												valueFormat="yyyyMMdd" placeholder=" " displayFormat="yyyy-MM-dd"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="單號:" width="6em" textAlign="Begin"/>
+											<Input id="DELIVERDOCUMENT" value="{/SOCredit/DELIVERDOCUMENT}" editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="公司代碼:" width="8rem" textAlign="Begin"/>
+											<Input id="COMPANYCODE" value="{/SOCredit/COMPANYCODE}" editable="false"/>
+											<Text text="{/SOCredit/COMPANYNAME}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="交易幣別:" width="6em" textAlign="Begin"/>
+											<Input id="TRANSCURRENCY" value="{/SOCredit/TRANSCURRENCY}" editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="信用額度(TWD):" width="8rem" textAlign="Begin"/>
+											<Input id="CREDITLIMITCURR" value="{/SOCredit/CREDITLIMITCURR}" editable="false"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="銷貨金額:" width="6em" textAlign="Begin"/>
+											<Input id="NETAMOUNT" value="{/SOCredit/NETAMOUNT}" editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="應收帳款(TWD):" width="8rem" textAlign="Begin"/>
+											<Input id="COMPCURR" value="{/SOCredit/COMPCURR}" editable="false"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="客戶:" width="6em" textAlign="Begin"/>
+											<Input id="SOLDTOPARTY" value="{/SOCredit/SOLDTOPARTY}" editable="false"/>
+											<Text text="{/SOCredit/SEARCHTERMS1}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="信用餘額(TWD):" width="8rem" textAlign="Begin"/>
+											<Input id="CREDITBALANCE" value="{/SOCredit/CREDITBALANCE}" editable="false"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="付款条件:" width="6em" textAlign="Begin"/>
+											<Input id="PAYMENTTERMS" value="{/SOCredit/PAYMENTTERMS}" editable="false"/>
+											<Text text="{/SOCredit/PAYMENTTERMSNAME}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="逾期應收款(TWD):" width="8rem" textAlign="Begin"/>
+											<Input id="OVERDUECURR" value="{/SOCredit/OVERDUECURR}" editable="false"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<l:VerticalLayout class="sapUiContentPadding" width="100%">
+					<Text text="原因說明" class="sapUiTinyMarginTop"/>
+					<TextArea id="REASON" value="{/SOCredit/REASON}" showExceededText="true" maxLength="200" width="100%"/>
+				</l:VerticalLayout>
+			</content>
+			<footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button text="提交" id="butSubmit" type="Accept" press="handleSubmit" width="6rem"/>
+					<Button text="取消" id="butSave" type="Reject" press="handleCancel" width="6rem"/>
+				</OverflowToolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

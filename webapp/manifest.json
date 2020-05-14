@@ -1,0 +1,274 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "SD.SOCredit",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"API_DEL_DOC_WITH_CREDIT_BLOCK": {
+				"uri": "/destinations/WT_S4HC/API_DEL_DOC_WITH_CREDIT_BLOCK/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"EMPLOYEES.xsodata": {
+				"uri": "/destinations/APLEXHANA/EMPLOYEES.xsodata/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"WORKFLOWLOG.xsodata": {
+				"uri": "/destinations/APLEXHANA/WORKFLOWLOG.xsodata/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_CompanyCode_cds": {
+				"uri": "/destinations/WT_S4HC/YY1_CompanyCode_cds/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"SOCREDIT.xsodata": {
+				"uri": "/destinations/APLEXHANA/SOCREDIT.xsodata/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_GETCURRENCY_CDS": {
+				"uri": "/destinations/WT_S4HC/YY1_GETCURRENCY_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_SALESCREDIT_CDS": {
+				"uri": "/destinations/WT_S4HC/YY1_SALESCREDIT_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_CREDITACCOUNT_CDS": {
+				"uri": "/destinations/WT_S4HC/YY1_CREDITACCOUNT_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_WORKFLOWNODE2": {
+				"uri": "/destinations/WT_S4HC/YY1_WORKFLOWNODE2_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			},
+			"YY1_CUMTOMERVH": {
+				"uri": "/destinations/WT_S4HC/YY1_CUMTOMERVH_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": []
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "SD.SOCredit.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "SD.SOCredit.i18n.i18n"
+				}
+			},
+			"currentUser": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "/services/userapi/currentUser",
+				"preload": false
+			},
+			"userAttributes": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false,
+				"uri": "/services/userapi/attributes"
+			},
+			"GetEMPLOYEES": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "EMPLOYEES.xsodata",
+				"preload": true
+			},
+			"WORKFLOWLOG": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "WORKFLOWLOG.xsodata",
+				"preload": true
+			},
+			"SOCREDIT": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "SOCREDIT.xsodata",
+				"preload": true
+			},
+			"BlockDoc": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "YY1_SALESCREDIT_CDS",
+				"preload": true
+			},
+			"CreditAccount": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "YY1_CREDITACCOUNT_CDS",
+				"preload": true
+			},
+			"CurrAmount": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "YY1_GETCURRENCY_CDS",
+				"preload": true
+			},
+			"NODE2ACCOUNT": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "YY1_WORKFLOWNODE2",
+				"preload": true
+			},
+			"Customer": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "YY1_CUMTOMERVH",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "SD.SOCredit.view",
+				"controlAggregation": "pages",
+				"controlId": "appNavContainer",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "CreditSumit",
+					"pattern": "",
+					"target": [
+						"CreditSumit"
+					]
+				}
+			],
+			"targets": {
+				"CreditSumit": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "CreditSumit",
+					"viewName": "CreditSumit"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}
